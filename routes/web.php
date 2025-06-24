@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('inicio', [
-        "etiquetas" => DB::table('etiquetas')->get()
+        "etiquetas" => DB::table('etiquetas')->get(),
+        "articulos" => DB::table('articulos')->orderBy('created_at')->get()
     ]);
 });
 
