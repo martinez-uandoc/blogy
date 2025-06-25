@@ -17,16 +17,16 @@ Route::get('articulo/1', function () {
     return view('articulo', compact('carrera', 'semestre', 'unidad'));
 });
 
-Route::get('etiquetas/nombre', function () {
-    $grupo = "Equilibrium";
-    $cancion = "Blut im auge";
-    $enlace = "https://www.youtube.com/watch?v=MMpSVPAjWhI&list=RDMMpSVPAjWhI&start_radio=1&pp=ygUMYmx1dCBpbSBhdWdloAcB";
-
-
-    return view('etiquetas')
-            ->with("artista", $grupo)
-            ->with("titulo", $cancion)
-            ->with('youtube', $enlace);
+Route::get('etiquetas/{nombre}', function ($nombre) {
+    $registros = DB::table("articulos AS a")
+            ->join('articulo_etiqueta AS ae', 'a.id', 'ae.articulo_id')
+            ->join('etiquetas AS e', 'e.id', 'ae.etiqueta_id')
+            ->where('e.nombre', $nombre)
+            ->select('a.*')
+            ->get();
+    return view('etiquetas', [
+        "articulos" => $registros
+    ]);
 });
 
 Route::get('busqueda', function () {

@@ -5,6 +5,16 @@
 @section("contenido")
 <h1 class="display-1 fw-bold text-white bg-dark">Artículo</h1>
 
-<h4>{{ $artista }} <small>{{ $titulo }}</small></h4>
-<a href="{{ $youtube }}">Ir al video</a>
+<div class="container d-flex flex-wrap justify-content-center">
+@foreach ($articulos as $a)
+<div class="card m-3" style="width: 18rem;">
+  <img src="{{ $a->portada }}" style="aspect-ratio: 1/1; object-fit:cover">
+  <div class="card-body">
+    <h5 class="card-title">{{ $a->titulo }}</h5>
+    <p class="card-text">{{ $a->descripcion }}</p>
+    <a href="#" class="btn btn-primary">📖 Ir a la nota</a>
+  </div>
+</div>
+@endforeach
+</div>
 @endsection
