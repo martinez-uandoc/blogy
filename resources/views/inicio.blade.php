@@ -31,7 +31,5 @@
 </div>
 
 
-<x-card></x-card>
-<x-card></x-card>
-<x-card></x-card>
+<x-card imagen="https://i.pinimg.com/736x/75/30/83/7530839b68fb57aae3148c61e1cc5e18.jpg" titulo="Titulo en el componente" descripcion="Descripción del articulo en componente"></x-card>
 @endsection
