@@ -1,8 +1,9 @@
-<div class="card" style="width: 18rem;">
+<div class="card {{ $clases ?? '' }}" style="width: 18rem;">
   <img src="{{ $imagen }}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ $titulo }}</h5>
     <p class="card-text">{{ $descripcion }}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary">Leer nota</a>
   </div>
 </div>
+
