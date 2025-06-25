@@ -19,7 +19,7 @@
 <br>
 <div class="container d-flex flex-wrap justify-content-center">
 @foreach ($articulos as $a)
-<x-card clases="bg-danger display-6 fw-bold" imagen="{{ $a->portada }}" titulo="{{ $a->titulo }}" descripcion="{{ $a->descripcion }}"></x-card>
+<x-card id="{{ $a->id }}" imagen="{{ $a->portada }}" titulo="{{ $a->titulo }}" descripcion="{{ $a->descripcion }}"></x-card>
 @endforeach
 </div>
 

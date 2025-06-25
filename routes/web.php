@@ -10,11 +10,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('articulo/1', function () {
-    $carrera = "LSC";
-    $semestre = "4-5-6";
-    $unidad = "Lado servidor";
-    return view('articulo', compact('carrera', 'semestre', 'unidad'));
+Route::get('articulo/{id}', function ($id) {
+    return view('articulo', [
+        "registro" => DB::table('articulos')->find($id)
+    ]);
 });
 
 Route::get('etiquetas/{nombre}', function ($nombre) {

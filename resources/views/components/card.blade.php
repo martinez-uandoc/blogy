@@ -3,7 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ $titulo }}</h5>
     <p class="card-text">{{ $descripcion }}</p>
-    <a href="#" class="btn btn-primary">Leer nota</a>
+    <a href="{{ url('articulo/'.$id) }}" class="btn btn-primary">Leer nota</a>
   </div>
 </div>
 

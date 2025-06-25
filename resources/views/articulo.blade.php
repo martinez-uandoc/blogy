@@ -5,8 +5,11 @@
 
 
 @section("contenido")
-<h1 class="display-1 fw-bold text-white bg-dark">Artículo</h1>
+<div class="container text-center">
+    <h1 class="display-2">{{ $registro->titulo }}</h1>
+<img src="{{ $registro->portada }}" alt="">
+<p class="text-muted">{{ $registro->descripcion }}</p>
 
-<h1>{{ $carrera }}</h1>
-<h3>({{ $semestre }}) {{ $unidad }}</h3>
+{!! $registro->contenido !!}
+</div>
 @endsection
