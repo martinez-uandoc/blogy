@@ -7,15 +7,19 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::controller(SitioController::class)->group(function(){
-    Route::get("/", "inicio");
-    Route::get("articulo/{id}", "verArticulo");
-    Route::get("etiquetas/{nombre}", "verArticulosDeEtiqueta");
-    Route::get("busqueda", "busqueda");
+Route::name("sitio.")->group( function(){
+    Route::controller(SitioController::class)->group(function(){
+        Route::get("/", "inicio")->name("sistemaInicio");
+        Route::get("publicacion/{id}", "verArticulo")->name("sistemaArticulo");
+        Route::get("tags/{nombre}", "verArticulosDeEtiqueta")->name("etiqueta");
+        Route::get("busqueda", "busqueda")->name("sistemaBusqueda");
+    });
 });
 
 
-Route::controller(AdministradorController::class)->group(function(){
-    Route::get("admin/iniciar-sesion", "iniciarSesion");
-    Route::get("admin/inicio", "inicio");
+Route::name("admin.")->group( function(){
+    Route::controller(AdministradorController::class)->group(function(){
+        Route::get("admin/iniciar-sesion", "iniciarSesion")->name("login");
+        Route::get("admin/inicio", "inicio")->name("adminInicio");
+    });
 });

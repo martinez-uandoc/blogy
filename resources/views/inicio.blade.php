@@ -7,8 +7,8 @@
 @section("contenido")
 <ul class="list-group list-group-horizontal mt-4 justify-content-center fs-2">
 @foreach($etiquetas AS $e)
-<li class="list-group-item"s>
-    <a href="{{ url('etiquetas/' .$e->nombre) }}">{{ $e->nombre }}</a>
+<li class="list-group-item">
+    <a href="{{ route("sitio.etiqueta", ["nombre" => $e->nombre]) }}">{{ $e->nombre }}</a>
 </li>
 @endforeach
 </ul>
