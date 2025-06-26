@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articulo;
+use App\Models\Etiqueta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,14 +11,14 @@ class SitioController extends Controller
 {
     public function inicio(){
         return view('inicio', [
-            "etiquetas" => DB::table('etiquetas')->get(),
-            "articulos" => DB::table('articulos')->orderBy('created_at')->get()
+            "etiquetas" => Etiqueta::all(),
+            "articulos" => Articulo::orderBy('created_at')->get()
         ]);
     }
 
     public function verArticulo($id){
         return view('articulo', [
-            "registro" => DB::table('articulos')->find($id)
+            "registro" => Articulo::find($id)
         ]);
     }
 

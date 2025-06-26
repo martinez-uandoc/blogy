@@ -7,7 +7,7 @@
 
 <div class="container d-flex flex-wrap justify-content-center">
 @forelse ($articulos as $a)
-<x-card id="{{ $a->id }}" imagen="{{ $a->portada }}" titulo="{{ $a->titulo }}" descripcion="{{ $a->descripcion }}"></x-card>
+<x-card autor="{{ $a->usuario->nombre }}" id="{{ $a->id }}" imagen="{{ $a->portada }}" titulo="{{ $a->titulo }}" descripcion="{{ $a->descripcion }}"></x-card>
 @empty
 <h1 class="text-center">No hay artículos con esta etiqueta</h1>
 @endforelse
