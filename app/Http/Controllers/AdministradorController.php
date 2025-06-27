@@ -11,6 +11,10 @@ class AdministradorController extends Controller
         return view('admin.login');
     }
 
+    public function entrar(){
+        return "Información recíbida";
+    }
+
 
     public function inicio(){
         return view('admin.inicio');

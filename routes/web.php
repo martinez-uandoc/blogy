@@ -20,6 +20,7 @@ Route::name("sitio.")->group( function(){
 Route::name("admin.")->group( function(){
     Route::controller(AdministradorController::class)->group(function(){
         Route::get("admin/iniciar-sesion", "iniciarSesion")->name("login");
+        Route::post("admin/entrar", "entrar")->name("entrar");
         Route::get("admin/inicio", "inicio")->name("adminInicio");
     });
 });
