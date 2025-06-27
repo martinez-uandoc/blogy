@@ -12,4 +12,9 @@ class Articulo extends Model
     public function usuario(): BelongsTo{
         return $this->belongsTo(User::class, "usuario_id", "id");
     }
+
+
+    public function scopeOrdernarPorFecha($query){
+        return $query->orderBy('created_at');
+    }
 }

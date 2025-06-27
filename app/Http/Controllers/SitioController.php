@@ -12,7 +12,7 @@ class SitioController extends Controller
     public function inicio(){
         return view('inicio', [
             "etiquetas" => Etiqueta::all(),
-            "articulos" => Articulo::orderBy('created_at')->get()
+            "articulos" => Articulo::ordernarPorFecha()->get()
         ]);
     }
 
@@ -24,12 +24,7 @@ class SitioController extends Controller
 
 
     public function verArticulosDeEtiqueta($nombre){
-        $registros = DB::table("articulos AS a")
-            ->join('articulo_etiqueta AS ae', 'a.id', 'ae.articulo_id')
-            ->join('etiquetas AS e', 'e.id', 'ae.etiqueta_id')
-            ->where('e.nombre', $nombre)
-            ->select('a.*')
-            ->get();
+        $registros = Etiqueta::nombre($nombre)->first()?->articulos;
         return view('etiquetas', [
             "articulos" => $registros
         ]);
