@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ContenidoBase extends Seeder
 {
@@ -39,22 +40,22 @@ class ContenidoBase extends Seeder
         DB::table('usuarios')->insert([
             'nombre' => "Ignacio",
             'email' => "ignacio@mail.com",
-            'password' => "1234",
+            'password' => Hash::make("1234"),
         ]);
         DB::table('usuarios')->insert([
             'nombre' => "Sarah",
             'email' => "sa@mail.com",
-            'password' => "5678",
+            'password' => Hash::make("5678"),
         ]);
         DB::table('usuarios')->insert([
             'nombre' => "Romi",
             'email' => "orim@mail.com",
-            'password' => "9012",
+            'password' => Hash::make("9012"),
         ]);
         DB::table('usuarios')->insert([
             'nombre' => "Laura",
             'email' => "alrua@mail.com",
-            'password' => "3456",
+            'password' => Hash::make("3456"),
         ]);
 
 

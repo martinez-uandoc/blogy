@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name("sitio.")->group( function(){
     Route::controller(SitioController::class)->group(function(){
-        Route::get("/", "inicio")->name("sistemaInicio");
+        Route::get("/", "inicio")->name("inicio");
         Route::get("publicacion/{id}", "verArticulo")->name("sistemaArticulo");
         Route::get("tags/{nombre}", "verArticulosDeEtiqueta")->name("etiqueta");
         Route::get("busqueda", "busqueda")->name("sistemaBusqueda");
@@ -20,6 +20,7 @@ Route::name("sitio.")->group( function(){
 Route::name("admin.")->group( function(){
     Route::controller(AdministradorController::class)->group(function(){
         Route::get("admin/iniciar-sesion", "iniciarSesion")->name("login");
+        Route::get("admin/cerrar-sesion", "cerrarSesion")->name("logout");
         Route::post("admin/entrar", "entrar")->name("entrar");
         Route::get("admin/inicio", "inicio")->name("adminInicio");
     });

@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 class SitioController extends Controller
 {
     public function inicio(){
+       
+        
+        
+        
         return view('inicio', [
             "etiquetas" => Etiqueta::all(),
             "articulos" => Articulo::ordernarPorFecha()->get()

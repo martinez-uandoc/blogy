@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('titulo')</title>
     @vite(["resources/css/app.css", "resources/js/app.js"])
+    
+    
     @yield('css')
 </head>
 <body>
@@ -27,15 +29,30 @@
               <a class="nav-link active" aria-current="page" href="#">{{ __("sitio.nav_articulos") }}</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="{{ __("sitio.nav_texto_busqueda") }}" aria-label="Search"/>
-            <button class="btn btn-warning" type="submit">{{ __("sitio.nav_boton_busqueda") }}</button>
-          </form>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="{{ __("sitio.nav_texto_busqueda") }}" aria-label="Search"/>
+                <button class="btn btn-warning" type="submit">{{ __("sitio.nav_boton_busqueda") }}</button>
+              </form>
+            </li>
+            @if(Auth::user())
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('admin.logout') }}">{{ Auth::user()->email }}</a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('admin.login') }}">Iniciar sesión</a>
+            </li>
+            @endif
+
+          </ul>
         </div>
       </div>
     </nav>
     @yield('contenido')
 
     @yield('js')
+    @include('sweetalert::alert')
 </body>
 </html>
