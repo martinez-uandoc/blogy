@@ -38,11 +38,14 @@
             </li>
             @if(Auth::user())
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('admin.logout') }}">{{ Auth::user()->email }}</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('admin.logout') }}">Cerrar sesión</a>
             </li>
             @else
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{ route('admin.login') }}">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('admin.registro') }}">Registro</a>
             </li>
             @endif
 

@@ -22,6 +22,8 @@ Route::name("admin.")->group( function(){
         Route::get("admin/iniciar-sesion", "iniciarSesion")->name("login");
         Route::get("admin/cerrar-sesion", "cerrarSesion")->name("logout");
         Route::post("admin/entrar", "entrar")->name("entrar");
+        Route::get("admin/registro", "registro")->name("registro");
+        Route::post("admin/registrar", "registrar")->name("registrar");
         Route::get("admin/inicio", "inicio")->name("adminInicio");
     });
 });
