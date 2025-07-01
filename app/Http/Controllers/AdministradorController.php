@@ -69,4 +69,16 @@ class AdministradorController extends Controller
             "etiquetas" => Etiqueta::count()
         ]);
     }
+
+
+    public function articulosFormulario(){
+        return view("admin.articulos.registros", [
+            "registros" => Articulo::all()
+        ])
+    }
+    public function articulosRegistrar(){
+        return view("admin.articulos.formulario", [
+            "etiquetas" => Etiqueta::all()
+        ])
+    }
 }
