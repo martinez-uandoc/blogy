@@ -8,8 +8,11 @@
 
 
 <div class="container-fluid my-5">
+
     <h1 class="display-4 fw-bold">📃 Artículos</h1>
-    <a href="{{ route('admin.articuloFormulario') }}" class="btn btn-warning btn-lg float-end">Nuevo formulario</a>
+    <div class="text-end mb-4">
+        <a href="{{ route('admin.articuloFormulario') }}" class="btn btn-warning btn-lg">Nuevo formulario</a>
+    </div>
     <table class="table table-bordered table-sm">
         <thead>
             <tr>
