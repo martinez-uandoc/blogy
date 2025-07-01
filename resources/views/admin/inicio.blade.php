@@ -19,10 +19,10 @@
                         <span class="badge bg-dark text-white">{{ $articulos }}</span>
                     </div>
                     <div class="col-lg-5">
-                        <a href="#" class="btn btn-lg btn-light border w-100">🔍 Consultar registros</a>
+                        <a href="{{ route('admin.articuloRegistros') }}" class="btn btn-lg btn-light border w-100">🔍 Consultar registros</a>
                     </div>
                     <div class="col-lg-5">
-                        <a href="#" class="btn btn-info btn-lg w-100">✏️ Nuevo registro</a>
+                        <a href="{{ route('admin.articuloFormulario') }}" class="btn btn-info btn-lg w-100">✏️ Nuevo registro</a>
                     </div>
                 </div>
             </div>

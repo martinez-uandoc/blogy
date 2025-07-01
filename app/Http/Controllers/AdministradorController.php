@@ -71,12 +71,12 @@ class AdministradorController extends Controller
     }
 
 
-    public function articulosFormulario(){
+    public function articulosRegistros(){
         return view("admin.articulos.registros", [
             "registros" => Articulo::all()
-        ])
+        ]);
     }
-    public function articulosRegistrar(){
+    public function articulosFormulario(){
         return view("admin.articulos.formulario", [
             "etiquetas" => Etiqueta::all()
         ]);
