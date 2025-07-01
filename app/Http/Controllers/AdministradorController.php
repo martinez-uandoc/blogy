@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificacionesRegistro;
+use App\Models\Articulo;
+use App\Models\Etiqueta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class AdministradorController extends Controller
@@ -50,12 +54,19 @@ class AdministradorController extends Controller
         $usuario->nombre = $request->get("nombre");
         $usuario->email = $request->get('correo');
         $usuario->password = Hash::make($contra);
-        $usuario->save();//id 7
+        $usuario->save();
+
+        Mail::to($request->get('correo'))
+            ->send( new NotificacionesRegistro($request->get('correo'), $contra) );
+
         Auth::loginUsingId($usuario->id);
         return redirect()->route("sitio.inicio");
     }
 
     public function inicio(){
-        return view('admin.inicio');
+        return view('admin.inicio', [
+            "articulos" => Articulo::count(),
+            "etiquetas" => Etiqueta::count()
+        ]);
     }
 }

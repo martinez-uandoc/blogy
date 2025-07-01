@@ -22,6 +22,14 @@
                 <label for="correo">Correo electrónico</label>
                 <input type="email" name="correo" id="correo" class="form-control form-control-lg">
                 <button class="btn btn-lg btn-primary w-100 mt-4">Registrame</button>
+
+                @if($errors->any())
+                    <ul>
+                        @foreach($errors->all() AS $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </form>
         </div>
     </div>
