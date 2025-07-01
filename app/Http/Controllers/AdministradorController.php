@@ -79,6 +79,6 @@ class AdministradorController extends Controller
     public function articulosRegistrar(){
         return view("admin.articulos.formulario", [
             "etiquetas" => Etiqueta::all()
-        ])
+        ]);
     }
 }
