@@ -24,6 +24,10 @@ Route::name("admin.")->group( function(){
         
         Route::middleware(esAdministrador::class)->group(function(){
             Route::get("admin/inicio", "inicio")->name("adminInicio");
+            Route::get("admin/articulos/registros", "articulosRegistros")->name("articuloRegistros");
+            Route::get("admin/articulos/formulario/{id?}", "articulosFormulario")->name("articuloFormulario");
+            Route::post("admin/articulos/registrar", "articulosRegistrar")->name("articuloRegistrar");
+            Route::post("admin/articulos/eliminar", "articulosEliminar")->name("articuloEliminar");
             Route::get("admin/cerrar-sesion", "cerrarSesion")->name("logout");
         });
         Route::middleware(estaLoggeado::class)->group(function(){
