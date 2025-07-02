@@ -88,7 +88,7 @@ class AdministradorController extends Controller
     public function articulosRegistrar(Request $request){
 
         DB::transaction( function() use ($request){
-            $articulo = new Articulo();
+            $articulo = Articulo::firstOrNew(["id" => $request->get('id')]);
             $articulo->titulo = $request->get('titulo');
             $articulo->portada = $request->get('portada');
             $articulo->descripcion = $request->get('descripcion');

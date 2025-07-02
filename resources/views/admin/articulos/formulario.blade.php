@@ -13,6 +13,7 @@
 
     <form action="{{ route('admin.articuloRegistrar') }}" method="post">
         {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{ $articulo?->id }}">
         <div class="bg-white rounded border shadow p-4">
             <div class="row">
                 <div class="col-lg-8">

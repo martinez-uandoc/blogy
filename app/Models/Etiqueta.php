@@ -9,6 +9,7 @@ class Etiqueta extends Model
 {
     protected $table = "etiquetas";
 
+    protected $fillable = ["id"];
 
     public function articulos(): BelongsToMany{
         return $this->belongsToMany(Articulo::class, "articulo_etiqueta", "etiqueta_id", "articulo_id");

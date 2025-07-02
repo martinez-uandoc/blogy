@@ -10,6 +10,8 @@ class Articulo extends Model
 {
     protected $table = "articulos";
 
+    protected $fillable = ["id"];
+
     public function usuario(): BelongsTo{
         return $this->belongsTo(User::class, "usuario_id", "id");
     }
