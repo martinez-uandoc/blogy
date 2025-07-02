@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Mail\NotificacionesRegistro;
 use App\Models\Articulo;
+use App\Models\ArticuloEtiqueta;
 use App\Models\Etiqueta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -76,9 +78,33 @@ class AdministradorController extends Controller
             "registros" => Articulo::all()
         ]);
     }
-    public function articulosFormulario(){
+    public function articulosFormulario($id = null){
         return view("admin.articulos.formulario", [
-            "etiquetas" => Etiqueta::all()
+            "etiquetas" => Etiqueta::all(),
+            "articulo" => Articulo::with("etiquetas")->find($id)
         ]);
+    }
+
+    public function articulosRegistrar(Request $request){
+
+        DB::transaction( function() use ($request){
+            $articulo = new Articulo();
+            $articulo->titulo = $request->get('titulo');
+            $articulo->portada = $request->get('portada');
+            $articulo->descripcion = $request->get('descripcion');
+            $articulo->contenido = $request->get('contenido');
+            $articulo->fecha_visualizacion = $request->get('fecha');
+            $articulo->usuario_id = Auth::id();
+            $articulo->save();
+
+            foreach ($request->get('etiqueta') as $e) {
+                $etiqueta = new ArticuloEtiqueta();
+                $etiqueta->articulo_id = $articulo->id;
+                $etiqueta->etiqueta_id = $e;
+                $etiqueta->save();
+            }
+        });
+
+        return redirect()->route('admin.articuloRegistros');
     }
 }

@@ -28,7 +28,9 @@
                 <td>{{ $r->titulo }}</td>
                 <td>{{ $r->descripcion }}</td>
                 <td>{{ $r->created_at ?? "Sin fecha" }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ route('admin.articuloFormulario', ["id" => $r->id]) }}">✏️ Editar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
