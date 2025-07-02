@@ -30,6 +30,11 @@
                 <td>{{ $r->created_at ?? "Sin fecha" }}</td>
                 <td>
                     <a href="{{ route('admin.articuloFormulario', ["id" => $r->id]) }}">✏️ Editar</a>
+                    <form action="{{ route('admin.articuloEliminar') }}" method="POST" class="preguntar">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{ $r->id }}">
+                        <button type="button" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -37,4 +42,18 @@
     </table>
 </div>
 
+@endsection
+
+
+@section('js')
+    <script>
+        for (const nodo of document.querySelectorAll(".preguntar button")) {
+            nodo.addEventListener("click", function(e){
+                let pregunta = confirm("¿Seguro de eliminar?")
+                if(pregunta){
+                    nodo.parentNode.submit();
+                }
+            })
+        }
+    </script>
 @endsection
