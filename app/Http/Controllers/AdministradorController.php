@@ -97,8 +97,15 @@ class AdministradorController extends Controller
             $articulo->usuario_id = Auth::id();
             $articulo->save();
 
+            ArticuloEtiqueta::where('articulo_id', $articulo->id)
+                            ->whereNotIn("etiqueta_id", $request->get('etiqueta'))
+                            ->delete();
+
             foreach ($request->get('etiqueta') as $e) {
-                $etiqueta = new ArticuloEtiqueta();
+                $etiqueta =ArticuloEtiqueta::firstOrNew([
+                    "articulo_id" => $articulo->id,
+                    "etiqueta_id" => $e
+                ]);
                 $etiqueta->articulo_id = $articulo->id;
                 $etiqueta->etiqueta_id = $e;
                 $etiqueta->save();
