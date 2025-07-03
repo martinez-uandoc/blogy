@@ -11,7 +11,7 @@
 
     <h1 class="display-4 fw-bold">📃 Nuevo registro</h1>
 
-    <form action="{{ route('admin.articuloRegistrar') }}" method="post">
+    <form action="{{ route('admin.articuloRegistrar') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $articulo?->id }}">
         <div class="bg-white rounded border shadow p-4">
@@ -42,8 +42,8 @@
             <br>
             <div class="row">
                 <div class="col-lg-12">
-                    <label for="portada">URL de la portada</label>
-                    <input type="text" class="form-control" name="portada" id="portada" required  value="{{ $articulo?->portada }}">
+                    <label for="portada">Portada</label>
+                    <input type="file" accept=".png,.jpg,.jpeg,.gif" class="form-control" name="portada" id="portada" required  value="{{ $articulo?->portada }}">
                 </div>
             </div>
             <br>

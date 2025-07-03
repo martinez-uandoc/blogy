@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AdministradorController extends Controller
 {
@@ -87,10 +88,12 @@ class AdministradorController extends Controller
 
     public function articulosRegistrar(Request $request){
 
-        DB::transaction( function() use ($request){
+        $ruta = Storage::disk("public")->putFile("portadas", $request->file("portada"));
+
+        DB::transaction( function() use ($request, $ruta){
             $articulo = Articulo::firstOrNew(["id" => $request->get('id')]);
             $articulo->titulo = $request->get('titulo');
-            $articulo->portada = $request->get('portada');
+            $articulo->portada = "/$ruta";
             $articulo->descripcion = $request->get('descripcion');
             $articulo->contenido = $request->get('contenido');
             $articulo->fecha_visualizacion = $request->get('fecha');
@@ -110,6 +113,19 @@ class AdministradorController extends Controller
                 $etiqueta->etiqueta_id = $e;
                 $etiqueta->save();
             }
+        });
+
+        return redirect()->route('admin.articuloRegistros');
+    }
+
+
+    public function articulosEliminar(Request $request){
+        
+        DB::transaction( function() use($request){
+            ArticuloEtiqueta::where('articulo_id', $request->get('id'))->delete();
+        
+            $articulo = Articulo::find($request->get('id'));
+            $articulo->delete();
         });
 
         return redirect()->route('admin.articuloRegistros');
