@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <label for="contenido">Contenido</label>
-                    <textarea name="contenido" id="contenido" cols="30" rows="12" class="form-control" required>{{ $articulo?->contenido }}</textarea>
+                    <textarea name="contenido" id="contenido" cols="30" rows="12" class="form-control editor" required>{{ $articulo?->contenido }}</textarea>
                 </div>
             </div>
             <br>

@@ -5,8 +5,15 @@
 
 
 @section("contenido")
-<h1 class="display-1 fw-bold text-white bg-dark">Artículo</h1>
 
-<h3>{{ $nombre_personaje }}</h3>
-<img src="{{ $imagen_personaje }}" alt="">
+<br><br>
+<h5><b>Resultados de la busqueda: </b> <span class="text-muted">{{ request('busqueda') }}</span> </h5>
+<br>
+<div class="container d-flex flex-wrap justify-content-center">
+@foreach ($resultados as $a)
+<x-card autor="{{ $a->usuario->nombre }}" id="{{ $a->id }}" imagen="{{ $a->portada }}" titulo="{{ $a->titulo }}" descripcion="{{ $a->descripcion }}"></x-card>
+@endforeach
+
+</div>
+{{ $resultados->links('pagination::bootstrap-5') }}
 @endsection

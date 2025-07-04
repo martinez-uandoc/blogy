@@ -31,9 +31,9 @@
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="{{ __("sitio.nav_texto_busqueda") }}" aria-label="Search"/>
-                <button class="btn btn-warning" type="submit">{{ __("sitio.nav_boton_busqueda") }}</button>
+              <form class="d-flex" role="search" action="{{ route('sitio.buscar') }}">
+                <input class="form-control me-2" type="search" name="busqueda" placeholder="{{ __("sitio.nav_texto_busqueda") }}" aria-label="Search"/>
+                <button class="btn btn-warning" type="submit"><i class="ri-search-2-line"></i></button>
               </form>
             </li>
             @if(Auth::user())

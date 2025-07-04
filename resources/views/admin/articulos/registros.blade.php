@@ -13,7 +13,7 @@
     <div class="text-end mb-4">
         <a href="{{ route('admin.articuloFormulario') }}" class="btn btn-warning btn-lg">Nuevo formulario</a>
     </div>
-    <table class="table table-bordered table-sm">
+    <table class="table table-bordered table-sm datatable">
         <thead>
             <tr>
                 <th>Título</th>

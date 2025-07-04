@@ -50,6 +50,9 @@ class AdministradorController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:20',
             'correo' => 'required|email|unique:usuarios,email',
+            'g-recaptcha-response' => 'required|captcha'
+        ],[
+            'g-recaptcha-response.required' => "Por favor marca la casilla de 'No soy un Robot'"
         ]);
 
         $contra = round(1000,9999);

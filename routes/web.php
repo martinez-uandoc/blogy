@@ -14,7 +14,7 @@ Route::name("sitio.")->group( function(){
         Route::get("/", "inicio")->name("inicio");
         Route::get("publicacion/{id}", "verArticulo")->name("sistemaArticulo");
         Route::get("tags/{nombre}", "verArticulosDeEtiqueta")->name("etiqueta");
-        Route::get("busqueda", "busqueda")->name("sistemaBusqueda");
+        Route::get("busqueda", "busqueda")->name("buscar");
     });
 });
 
